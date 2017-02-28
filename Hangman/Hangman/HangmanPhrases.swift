@@ -24,14 +24,24 @@ class HangmanPhrases {
         return phrases.object(at: index) as! String
     }
     
+    var answer = ""
     var validLetters = Set<Character>()
     var winState = false
     var incorrectGuesses = [Character]()
+    var correctGuesses = [Character]()
+    
+    func fillValidLettersSet() {
+        for c in answer.characters {
+            if !validLetters.contains(c) {
+                validLetters.insert(c)
+            }
+        }
+    }
     
     func checkGuess(_ c: Character) -> Bool {
         if validLetters.contains(c) {
             validLetters.remove(c)
-            
+            correctGuesses.append(c)
             return true
         }
         incorrectGuesses.append(c)
@@ -43,6 +53,20 @@ class HangmanPhrases {
             return true
         }
         return false
+    }
+    
+    func displayedProgress() -> String {
+        var displayed = ""
+        for c in answer.characters {
+            if c == " " {
+                displayed += "  "
+            } else if correctGuesses.contains(c) {
+                displayed += String(c) + " "
+            } else {
+                displayed += "_ "
+            }
+        }
+        return displayed
     }
     
     
