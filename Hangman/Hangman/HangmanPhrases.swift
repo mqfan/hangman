@@ -24,4 +24,27 @@ class HangmanPhrases {
         return phrases.object(at: index) as! String
     }
     
+    var validLetters = Set<Character>()
+    var winState = false
+    var incorrectGuesses = [Character]()
+    
+    func checkGuess(_ c: Character) -> Bool {
+        if validLetters.contains(c) {
+            validLetters.remove(c)
+            
+            return true
+        }
+        incorrectGuesses.append(c)
+        return false
+    }
+    
+    func checkWin() -> Bool {
+        if validLetters.isEmpty {
+            return true
+        }
+        return false
+    }
+    
+    
+    
 }
