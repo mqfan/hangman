@@ -24,9 +24,15 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hangman1" translatesAutoresizingMaskIntoConstraints="NO" id="ygJ-k2-baX">
                                 <rect key="frame" x="66" y="70" width="243" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="XSn-LA-UYZ"/>
+                                </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Guess Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vBL-iA-4e6">
                                 <rect key="frame" x="139" y="580" width="97" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="f37-eS-Zuy"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -40,9 +46,18 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INH-jS-HvX">
                                 <rect key="frame" x="172" y="625" width="30" height="30"/>
                                 <state key="normal" title="Go!"/>
+                                <connections>
+                                    <action selector="madeGuess:" destination="33m-bG-32Y" eventType="touchUpInside" id="gbw-fw-c0m"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otp-U6-j9Y">
-                                <rect key="frame" x="183.5" y="495" width="7.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otp-U6-j9Y">
+                                <rect key="frame" x="187.5" y="495" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7t-dl-bvj">
+                                <rect key="frame" x="188" y="409" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -58,17 +73,20 @@
                             <constraint firstAttribute="trailingMargin" secondItem="ygJ-k2-baX" secondAttribute="trailing" constant="50" id="Nu2-BE-nrD"/>
                             <constraint firstItem="vBL-iA-4e6" firstAttribute="leading" secondItem="xKS-yl-l6T" secondAttribute="leadingMargin" constant="123" id="QDz-M7-wIJ"/>
                             <constraint firstItem="PV5-dv-xAH" firstAttribute="centerX" secondItem="vBL-iA-4e6" secondAttribute="centerX" id="YiK-Kx-nqY"/>
+                            <constraint firstItem="G7t-dl-bvj" firstAttribute="centerX" secondItem="PV5-dv-xAH" secondAttribute="centerX" id="bGw-vG-i5d"/>
                             <constraint firstItem="vBL-iA-4e6" firstAttribute="top" secondItem="ygJ-k2-baX" secondAttribute="bottom" constant="310" id="btH-QD-eXP"/>
                             <constraint firstItem="vBL-iA-4e6" firstAttribute="top" secondItem="PV5-dv-xAH" secondAttribute="bottom" constant="100" id="c1a-37-W8h"/>
+                            <constraint firstItem="PV5-dv-xAH" firstAttribute="top" secondItem="G7t-dl-bvj" secondAttribute="bottom" constant="50" id="enT-ls-gl0"/>
                             <constraint firstItem="ygJ-k2-baX" firstAttribute="leading" secondItem="xKS-yl-l6T" secondAttribute="leadingMargin" constant="50" id="hpL-oB-TnG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vBL-iA-4e6" secondAttribute="trailing" constant="123" id="ing-jN-ZRe"/>
                             <constraint firstItem="ygJ-k2-baX" firstAttribute="top" secondItem="fga-sG-nzY" secondAttribute="bottom" constant="50" id="pUi-Ph-yJv"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="hangmanImage" destination="ygJ-k2-baX" id="X6c-4B-u11"/>
+                        <outlet property="displayedGuesses" destination="G7t-dl-bvj" id="R1G-jG-nnr"/>
+                        <outlet property="guessedLetter" destination="vBL-iA-4e6" id="sye-qc-4MK"/>
+                        <outlet property="hangmanImage" destination="ygJ-k2-baX" id="FWD-Uj-Dks"/>
                         <outlet property="incorrectLetters" destination="otp-U6-j9Y" id="l2P-Za-mc3"/>
-                        <outlet property="updateHangmanImage" destination="ygJ-k2-baX" id="1xH-dt-q8h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJo-zA-LYW" userLabel="First Responder" sceneMemberID="firstResponder"/>

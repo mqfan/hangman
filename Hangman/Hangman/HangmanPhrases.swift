@@ -26,30 +26,41 @@ class HangmanPhrases {
     
     var answer = ""
     var validLetters = Set<Character>()
-    var winState = false
     var incorrectGuesses = [Character]()
     var correctGuesses = [Character]()
     
-    func fillValidLettersSet() {
+    func initAnswerAndValidLetters() {
+        answer = getRandomPhrase()
+        validLetters = Set<Character>()
         for c in answer.characters {
-            if !validLetters.contains(c) {
+            if !(c == " ") && !validLetters.contains(c) {
                 validLetters.insert(c)
             }
         }
     }
     
-    func checkGuess(_ c: Character) -> Bool {
-        if validLetters.contains(c) {
+    func checkGuess(_ c: Character) {
+        if answer.contains(String(c)) {
             validLetters.remove(c)
             correctGuesses.append(c)
+        } else {
+            incorrectGuesses.append(c)
+        }
+        
+    }
+    
+    func checkLoss() -> Bool {
+        if incorrectGuesses.count >= 6 {
             return true
         }
-        incorrectGuesses.append(c)
         return false
     }
     
     func checkWin() -> Bool {
+        print(validLetters.count)
+        print(validLetters.first ?? "nothing")
         if validLetters.isEmpty {
+            
             return true
         }
         return false
